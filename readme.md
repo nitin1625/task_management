@@ -8,7 +8,7 @@ This is a Django-based RESTful API for managing tasks and users, built with Djan
 ### Features
 - **User Management**: Create users and retrieve user details/list.
 - **Task Management**: Create tasks, assign users, and fetch tasks by user.
-- **Authentication**: Token-based authentication for protected endpoints.
+- **Authentication**: JWT-based authentication for protected endpoints.
 - **Admin Interface**: Customized Django admin panel for managing users and tasks.
 - **Scalability**: Pagination and proper database indexing.
 
@@ -89,8 +89,8 @@ djangorestframework>=3.14
     }
     ```
   - **Response**: `{
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."  // New refresh token due to ROTATE_REFRESH_TOKENS
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1Ni...",
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1Ni..."  // New refresh token due to ROTATE_REFRESH_TOKENS
 }`
 
 ### User Endpoints
@@ -197,7 +197,7 @@ djangorestframework>=3.14
    - Use `{{base_url}}` in URLs and `Authorization: Token {{token}}` in headers.
 
 2. **Collection**:
-   - **Obtain Token**: `POST {{base_url}}/api-token-auth/`
+   - **Obtain Token**: `POST {{base_url}}/api/token/`
    - **Create User**: `POST {{base_url}}/api/users/create/`
    - **Get All Users**: `GET {{base_url}}/api/users/`
    - **Get User Details**: `GET {{base_url}}/api/users/1/`
