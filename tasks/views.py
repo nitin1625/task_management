@@ -9,7 +9,7 @@ class TaskCreateView(generics.CreateAPIView):
     """Create a new task"""
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     
     def perform_create(self, serializer):
         serializer.save()
@@ -18,7 +18,7 @@ class TaskAssignView(generics.UpdateAPIView):
     """Assign task to users"""
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     lookup_field = 'pk'
     
     def update(self, request, *args, **kwargs):
@@ -56,7 +56,7 @@ class UserCreateView(generics.CreateAPIView):
     """Create a new user"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAny] 
+    permission_classes = [IsAuthenticated]
     
     def perform_create(self, serializer):
         user = serializer.save()

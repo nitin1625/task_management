@@ -79,16 +79,19 @@ djangorestframework>=3.14
 
 ### Authentication
 - **Obtain Token**:
-  - **URL**: `POST /api-token-auth/`
+  - **URL**: `POST api/token/`
   - **Headers**: `Content-Type: application/json`
   - **Payload**:
     ```json
     {
-        "username": "admin",
+        "email": "admin@gmail.com",
         "password": "admin123"
     }
     ```
-  - **Response**: `{"token": "9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"}`
+  - **Response**: `{
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."  // New refresh token due to ROTATE_REFRESH_TOKENS
+}`
 
 ### User Endpoints
 1. **Create User**:
