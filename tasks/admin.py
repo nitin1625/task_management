@@ -3,6 +3,8 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User, Task
 from django.utils.html import format_html
 
+
+# Register User Model
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     list_display = ('username', 'email', 'department', 'job_title', 'mobile', 
@@ -29,6 +31,8 @@ class UserAdmin(BaseUserAdmin):
         return obj.tasks.count()
     task_count.short_description = 'Tasks Assigned'
 
+
+# Register Task Model
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     list_display = ('name', 'task_type_colored', 'priority_colored', 'status_colored', 

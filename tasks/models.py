@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.validators import RegexValidator
 
+# Customer User Model
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
         if not email:
@@ -18,6 +19,8 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, username, password, **extra_fields)
 
+
+# User Model
 class User(AbstractBaseUser, PermissionsMixin):
     DEPARTMENT_CHOICES = (
         ('ENGINEERING', 'Engineering'),
@@ -54,6 +57,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         ordering = ['-created_at']
 
+
+# Task Model
 class Task(models.Model):
     TASK_TYPES = (
         ('MEETING', 'Meeting'),

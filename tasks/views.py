@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from .models import Task, User
 from .serializers import *
 
+
 class TaskCreateView(generics.CreateAPIView):
     """Create a new task"""
     queryset = Task.objects.all()
@@ -17,7 +18,7 @@ class TaskCreateView(generics.CreateAPIView):
 class TaskAssignView(generics.UpdateAPIView):
     """Assign task to users"""
     queryset = Task.objects.all()
-    serializer_class = TaskAssignSerializer  # Use TaskAssignSerializer with assigned_user_ids
+    serializer_class = TaskAssignSerializer 
     permission_classes = [IsAuthenticated]
     lookup_field = 'pk'
     

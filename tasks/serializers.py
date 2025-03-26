@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Task, User
 from django.utils import timezone
 
+
+# UserModel Serializer
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)  # Added for creation
     
@@ -14,6 +16,9 @@ class UserSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['created_at', 'last_login']
 
+
+
+# TaskModel Serializer
 class TaskSerializer(serializers.ModelSerializer):
     assigned_users = UserSerializer(many=True, read_only=True)  # Read-only to show assigned users
     
@@ -30,6 +35,8 @@ class TaskSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Due date cannot be in the past")
         return data
 
+
+# Task Assign Serializer
 class TaskAssignSerializer(serializers.ModelSerializer):
     assigned_users = UserSerializer(many=True, read_only=True)
     assigned_user_ids = serializers.PrimaryKeyRelatedField(
