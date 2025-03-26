@@ -243,7 +243,7 @@ TASK_MANAGEMENT/
 ---
 
 ## Additional Notes
-- **Authentication**: Token-based via `rest_framework.authtoken`. Tokens don’t expire by default.
+- **Authentication**: Token-based via `rest_framework_simplejwt`. Tokens expire in 60 minutes.
 - **Database**: SQLite by default; 
 - **Scalability**: Pagination set to 20 items per page; adjust in `settings.py`.
 - **Error Handling**: Validation errors return 400; unauthorized requests return 401.
@@ -254,7 +254,7 @@ TASK_MANAGEMENT/
 ---
 
 ## Troubleshooting
-- **Token Issues**: Ensure `rest_framework.authtoken` is in `INSTALLED_APPS` and migrations are applied.
+- **Token Issues**: Ensure `rest_framework_simplejwt` is in `INSTALLED_APPS` and migrations are applied.
 - **404 Errors**: Verify URLs match `urls.py` and server is running.
 
 
