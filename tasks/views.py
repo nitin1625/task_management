@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.shortcuts import get_object_or_404
 from .models import Task, User
-from .serializers import TaskSerializer, UserSerializer
+from .serializers import *
 
 class TaskCreateView(generics.CreateAPIView):
     """Create a new task"""
@@ -17,7 +17,7 @@ class TaskCreateView(generics.CreateAPIView):
 class TaskAssignView(generics.UpdateAPIView):
     """Assign task to users"""
     queryset = Task.objects.all()
-    serializer_class = TaskSerializer
+    serializer_class = TaskAssignSerializer  # Use TaskAssignSerializer with assigned_user_ids
     permission_classes = [IsAuthenticated]
     lookup_field = 'pk'
     
@@ -31,6 +31,7 @@ class TaskAssignView(generics.UpdateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+    
 
 class UserTasksView(generics.ListAPIView):
     """Get all tasks for a specific user"""

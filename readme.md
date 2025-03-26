@@ -147,8 +147,8 @@ djangorestframework>=3.14
          "description": "Create API documentation",
          "task_type": "DEVELOPMENT",
          "priority": "HIGH",
-         "due_date": "2025-04-10T12:00:00Z",
-         "assigned_user_ids": [1, 2]
+         "due_date": "2025-04-10T12:00:00Z"
+         
      }
      ```
    - **Response**: `201 Created` with task details
